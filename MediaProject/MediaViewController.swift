@@ -74,12 +74,13 @@ class MediaViewController: UIViewController {
         }
     }
     
-    @objc func rightBarButtonTapped() {
+    @objc func leftBarButtonTapped() {
         
     }
     
-    @objc func leftBarButtonTapped() {
-        
+    @objc func rightBarButtonTapped() {
+        let vc = MovieSearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
