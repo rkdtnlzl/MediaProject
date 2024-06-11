@@ -37,7 +37,7 @@ class MediaTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with movie: Movie) {
+    func configure(with movie: Media) {
         
         releaseDateLabel.text = movie.release_date
         mediaTypeLabel.text = "#\(movie.media_type)"

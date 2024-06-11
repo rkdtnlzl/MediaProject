@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Decodable {
+struct Media: Decodable {
     
     let backdrop_path: String?
     let id: Int
@@ -26,6 +26,6 @@ struct Movie: Decodable {
     let vote_count: Int
 }
 
-struct MovieResponse: Decodable {
-    let results: [Movie]
+struct MediaResponse: Decodable {
+    let results: [Media]
 }

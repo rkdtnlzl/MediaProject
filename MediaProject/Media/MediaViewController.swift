@@ -12,7 +12,7 @@ import Alamofire
 class MediaViewController: UIViewController {
     
     let tableView = UITableView()
-    var movies: [Movie] = []
+    var movies: [Media] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,22 +21,22 @@ class MediaViewController: UIViewController {
         configureHierarchy()
         configureUI()
         configureLayout()
-        fetchMovies()
+        fetchMedia()
     }
     
-    func fetchMovies() {
+    func fetchMedia() {
         
         let urlString = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.mediaKey)"
         
-        AF.request(urlString).responseDecodable(of: MovieResponse.self) { response in
+        AF.request(urlString).responseDecodable(of: MediaResponse.self) { response in
             switch response.result {
-            case .success(let movieResponse):
-                self.movies = movieResponse.results
+            case .success(let mediaResponse):
+                self.movies = mediaResponse.results
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
             case .failure(let error):
-                print("Error fetching movies: \(error)")
+                print(error)
             }
         }
     }
