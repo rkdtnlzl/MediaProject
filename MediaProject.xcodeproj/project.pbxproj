@@ -19,6 +19,8 @@
 		016B9C672C1727D1009D2996 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C662C1727D1009D2996 /* Media.swift */; };
 		016B9C742C18398F009D2996 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 016B9C732C18398F009D2996 /* .gitignore */; };
 		016B9C762C18399C009D2996 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C752C18399C009D2996 /* APIKey.swift */; };
+		016B9C782C1843A0009D2996 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */; };
+		016B9C7A2C184914009D2996 /* MovieSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		016B9C662C1727D1009D2996 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		016B9C732C18398F009D2996 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		016B9C752C18399C009D2996 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewController.swift; sourceTree = "<group>"; };
+		016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				016B9C4B2C16EBBD009D2996 /* MediaViewController.swift */,
 				016B9C612C17279D009D2996 /* MediaTableViewCell.swift */,
 				016B9C662C1727D1009D2996 /* Media.swift */,
+				016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */,
+				016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */,
 				016B9C752C18399C009D2996 /* APIKey.swift */,
 				016B9C502C16EBBF009D2996 /* Assets.xcassets */,
 				016B9C522C16EBBF009D2996 /* LaunchScreen.storyboard */,
@@ -166,8 +172,10 @@
 				016B9C4C2C16EBBD009D2996 /* MediaViewController.swift in Sources */,
 				016B9C482C16EBBD009D2996 /* AppDelegate.swift in Sources */,
 				016B9C622C17279D009D2996 /* MediaTableViewCell.swift in Sources */,
+				016B9C7A2C184914009D2996 /* MovieSearchCollectionViewCell.swift in Sources */,
 				016B9C4A2C16EBBD009D2996 /* SceneDelegate.swift in Sources */,
 				016B9C762C18399C009D2996 /* APIKey.swift in Sources */,
+				016B9C782C1843A0009D2996 /* MovieSearchViewController.swift in Sources */,
 				016B9C672C1727D1009D2996 /* Media.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
