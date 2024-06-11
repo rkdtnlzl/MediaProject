@@ -17,6 +17,8 @@
 		016B9C622C17279D009D2996 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C612C17279D009D2996 /* MediaTableViewCell.swift */; };
 		016B9C652C1727BD009D2996 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 016B9C642C1727BD009D2996 /* SDWebImage */; };
 		016B9C672C1727D1009D2996 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C662C1727D1009D2996 /* Media.swift */; };
+		016B9C742C18398F009D2996 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 016B9C732C18398F009D2996 /* .gitignore */; };
+		016B9C762C18399C009D2996 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C752C18399C009D2996 /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		016B9C552C16EBBF009D2996 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		016B9C612C17279D009D2996 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		016B9C662C1727D1009D2996 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		016B9C732C18398F009D2996 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		016B9C752C18399C009D2996 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,7 @@
 		016B9C3B2C16EBBD009D2996 = {
 			isa = PBXGroup;
 			children = (
+				016B9C732C18398F009D2996 /* .gitignore */,
 				016B9C462C16EBBD009D2996 /* MediaProject */,
 				016B9C452C16EBBD009D2996 /* Products */,
 			);
@@ -69,6 +74,7 @@
 				016B9C4B2C16EBBD009D2996 /* MediaViewController.swift */,
 				016B9C612C17279D009D2996 /* MediaTableViewCell.swift */,
 				016B9C662C1727D1009D2996 /* Media.swift */,
+				016B9C752C18399C009D2996 /* APIKey.swift */,
 				016B9C502C16EBBF009D2996 /* Assets.xcassets */,
 				016B9C522C16EBBF009D2996 /* LaunchScreen.storyboard */,
 				016B9C552C16EBBF009D2996 /* Info.plist */,
@@ -145,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				016B9C512C16EBBF009D2996 /* Assets.xcassets in Resources */,
+				016B9C742C18398F009D2996 /* .gitignore in Resources */,
 				016B9C542C16EBBF009D2996 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +167,7 @@
 				016B9C482C16EBBD009D2996 /* AppDelegate.swift in Sources */,
 				016B9C622C17279D009D2996 /* MediaTableViewCell.swift in Sources */,
 				016B9C4A2C16EBBD009D2996 /* SceneDelegate.swift in Sources */,
+				016B9C762C18399C009D2996 /* APIKey.swift in Sources */,
 				016B9C672C1727D1009D2996 /* Media.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
