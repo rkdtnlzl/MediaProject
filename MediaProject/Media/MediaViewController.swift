@@ -98,4 +98,11 @@ extension MediaViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(with: movies[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMedia = movies[indexPath.row]
+        let detailVC = MediaDetailViewController()
+        detailVC.media = selectedMedia
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
