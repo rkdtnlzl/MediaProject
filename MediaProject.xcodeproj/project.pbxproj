@@ -24,6 +24,8 @@
 		016B9C7C2C1867FD009D2996 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C7B2C1867FD009D2996 /* Movie.swift */; };
 		016B9C7F2C186A1A009D2996 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 016B9C7E2C186A1A009D2996 /* Kingfisher */; };
 		016B9C8C2C1995B9009D2996 /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016B9C8B2C1995B9009D2996 /* MediaDetailViewController.swift */; };
+		01C361FA2C294DDB00D8ED61 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C361F92C294DDB00D8ED61 /* TabBarViewController.swift */; };
+		01C361FC2C294E3400D8ED61 /* RecommendMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C361FB2C294E3400D8ED61 /* RecommendMovieViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		016B9C7B2C1867FD009D2996 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		016B9C8B2C1995B9009D2996 /* MediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
+		01C361F92C294DDB00D8ED61 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		01C361FB2C294E3400D8ED61 /* RecommendMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendMovieViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,10 +83,9 @@
 		016B9C462C16EBBD009D2996 /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
-				016B9C472C16EBBD009D2996 /* AppDelegate.swift */,
-				016B9C492C16EBBD009D2996 /* SceneDelegate.swift */,
-				016B9C802C187ED7009D2996 /* Media */,
-				016B9C812C187EF3009D2996 /* Movie */,
+				01C361FF2C29501500D8ED61 /* Application */,
+				01C361FE2C294FFA00D8ED61 /* Extension */,
+				01C361FD2C294FD100D8ED61 /* Presentation */,
 				016B9C752C18399C009D2996 /* APIKey.swift */,
 				016B9C502C16EBBF009D2996 /* Assets.xcassets */,
 				016B9C522C16EBBF009D2996 /* LaunchScreen.storyboard */,
@@ -91,25 +94,84 @@
 			path = MediaProject;
 			sourceTree = "<group>";
 		};
-		016B9C802C187ED7009D2996 /* Media */ = {
+		01C361FD2C294FD100D8ED61 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				01C361F92C294DDB00D8ED61 /* TabBarViewController.swift */,
+				01C362042C29509300D8ED61 /* RecommendMovie */,
+				01C362002C29503100D8ED61 /* Home */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		01C361FE2C294FFA00D8ED61 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		01C361FF2C29501500D8ED61 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				016B9C472C16EBBD009D2996 /* AppDelegate.swift */,
+				016B9C492C16EBBD009D2996 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		01C362002C29503100D8ED61 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				01C362032C29508000D8ED61 /* Cell */,
+				01C362022C29506B00D8ED61 /* Model */,
+				01C362012C29505B00D8ED61 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		01C362012C29505B00D8ED61 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				016B9C4B2C16EBBD009D2996 /* MediaViewController.swift */,
 				016B9C8B2C1995B9009D2996 /* MediaDetailViewController.swift */,
-				016B9C612C17279D009D2996 /* MediaTableViewCell.swift */,
-				016B9C662C1727D1009D2996 /* Media.swift */,
+				016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */,
 			);
-			path = Media;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		016B9C812C187EF3009D2996 /* Movie */ = {
+		01C362022C29506B00D8ED61 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */,
-				016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */,
+				016B9C662C1727D1009D2996 /* Media.swift */,
 				016B9C7B2C1867FD009D2996 /* Movie.swift */,
 			);
-			path = Movie;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		01C362032C29508000D8ED61 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				016B9C612C17279D009D2996 /* MediaTableViewCell.swift */,
+				016B9C792C184914009D2996 /* MovieSearchCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		01C362042C29509300D8ED61 /* RecommendMovie */ = {
+			isa = PBXGroup;
+			children = (
+				01C362052C29509F00D8ED61 /* Controller */,
+			);
+			path = RecommendMovie;
+			sourceTree = "<group>";
+		};
+		01C362052C29509F00D8ED61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				01C361FB2C294E3400D8ED61 /* RecommendMovieViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,10 +259,12 @@
 			files = (
 				016B9C8C2C1995B9009D2996 /* MediaDetailViewController.swift in Sources */,
 				016B9C4C2C16EBBD009D2996 /* MediaViewController.swift in Sources */,
+				01C361FA2C294DDB00D8ED61 /* TabBarViewController.swift in Sources */,
 				016B9C482C16EBBD009D2996 /* AppDelegate.swift in Sources */,
 				016B9C7C2C1867FD009D2996 /* Movie.swift in Sources */,
 				016B9C622C17279D009D2996 /* MediaTableViewCell.swift in Sources */,
 				016B9C7A2C184914009D2996 /* MovieSearchCollectionViewCell.swift in Sources */,
+				01C361FC2C294E3400D8ED61 /* RecommendMovieViewController.swift in Sources */,
 				016B9C4A2C16EBBD009D2996 /* SceneDelegate.swift in Sources */,
 				016B9C762C18399C009D2996 /* APIKey.swift in Sources */,
 				016B9C782C1843A0009D2996 /* MovieSearchViewController.swift in Sources */,
