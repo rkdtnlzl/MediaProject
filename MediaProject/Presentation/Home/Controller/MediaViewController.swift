@@ -26,7 +26,7 @@ class MediaViewController: UIViewController {
     
     func fetchMedia() {
         
-        let urlString = "https://api.themoviedb.org/3/trending/movie/week?api_key=\(APIKey.mediaKey)"
+        let urlString = "\(APIURL.tmdbRootUrl)trending/movie/week?api_key=\(APIKey.mediaKey)"
         
         AF.request(urlString).responseDecodable(of: MediaResponse.self) { response in
             switch response.result {

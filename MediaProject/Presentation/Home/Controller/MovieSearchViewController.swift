@@ -1,14 +1,7 @@
-//
-//  MovieSearchViewController.swift
-//  MediaProject
-//
-//  Created by 강석호 on 6/11/24.
-//
-
 import UIKit
-
-import SnapKit
 import Alamofire
+import SnapKit
+import Kingfisher
 
 class MovieSearchViewController: UIViewController {
     
@@ -72,7 +65,7 @@ class MovieSearchViewController: UIViewController {
     }
     
     func fetchMovies(query: String) {
-        let url = "https://api.themoviedb.org/3/search/movie?api_key=\(APIKey.mediaKey)"
+        let url = "\(APIURL.tmdbRootUrl)search/movie?api_key=\(APIKey.mediaKey)"
         let param = ["query": query]
         
         AF.request(url, parameters: param).responseDecodable(of: MovieResponse.self) { response in
@@ -99,6 +92,13 @@ extension MovieSearchViewController: UICollectionViewDataSource, UICollectionVie
         let movie = movies[indexPath.item]
         cell.configure(with: movie)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movies[indexPath.item]
+        let moreMovieVC = MoreMovieViewController()
+        moreMovieVC.movieID = movie.id
+        navigationController?.pushViewController(moreMovieVC, animated: true)
     }
 }
 
