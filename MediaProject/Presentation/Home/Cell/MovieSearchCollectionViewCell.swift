@@ -10,22 +10,18 @@ import SnapKit
 import Kingfisher
 
 class MovieSearchCollectionViewCell: UICollectionViewCell {
-    
     static let identifier = "MovieSearchCollectionViewCell"
     
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .gray
-        
         contentView.addSubview(imageView)
-        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        
         imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(contentView.snp.width)
         }
     }
     
