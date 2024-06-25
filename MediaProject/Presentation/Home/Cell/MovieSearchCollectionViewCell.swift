@@ -29,7 +29,7 @@ class MovieSearchCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with movie: Movie) {
+    func configure(with movie: MovieResponse) {
         if let posterPath = movie.poster_path {
             let urlString = "https://image.tmdb.org/t/p/w500\(posterPath)"
             if let url = URL(string: urlString) {

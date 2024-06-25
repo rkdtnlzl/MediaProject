@@ -9,7 +9,7 @@ class MovieSearchViewController: UIViewController {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
-    var movies: [Movie] = []
+    var movies: [MovieResponse] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +68,7 @@ class MovieSearchViewController: UIViewController {
         let url = "\(APIURL.tmdbRootUrl)search/movie?api_key=\(APIKey.mediaKey)"
         let param = ["query": query]
         
-        AF.request(url, parameters: param).responseDecodable(of: MovieResponse.self) { response in
+        AF.request(url, parameters: param).responseDecodable(of: Movie.self) { response in
             switch response.result {
             case .success(let movieResponse):
                 self.movies = movieResponse.results
