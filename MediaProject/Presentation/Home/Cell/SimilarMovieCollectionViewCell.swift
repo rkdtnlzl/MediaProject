@@ -1,5 +1,5 @@
 //
-//  RecommendMovieCell.swift
+//  SimilarMovieCell.swift
 //  MediaProject
 //
 //  Created by 강석호 on 6/24/24.
@@ -7,21 +7,18 @@
 
 import UIKit
 
-class RecommendedMovieCell: UICollectionViewCell {
-    
-    static let identifier = "RecommendedMovieCell"
+class SimilarMovieCollectionViewCell: UICollectionViewCell {
+    static let identifier = "SimilarMovieCell"
     
     let imageView = UIImageView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(contentView.snp.width).multipliedBy(1.5)
+            make.edges.equalToSuperview()
         }
     }
     
