@@ -10,164 +10,144 @@ import Alamofire
 import SnapKit
 import Kingfisher
 
-class MoreMovieViewController: UIViewController {
-
+class MoreMovieViewController: BaseViewController {
+    
     var movieID: Int?
-    var similarMovies: [Movie] = []
-    var recommendedMovies: [Movie] = []
-    let similarMovieLabel = UILabel()
-    let recommendedMovieLabel = UILabel()
-    lazy var similarCollectionView = UICollectionView(frame: .zero, collectionViewLayout: similarCollectionViewLayout())
-    lazy var recommendedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: recommendedCollectionViewLayout())
+    
+    lazy var tableView: UITableView = {
+        let view = UITableView()
+        view.rowHeight = 200
+        view.register(PosterTableViewCell.self, forCellReuseIdentifier: PosterTableViewCell.id)
+        return view
+    }()
+    
+    var imageList: [[MovieResponse]] = [
+        [MovieResponse(id: 1, poster_path: "")],
+        [MovieResponse(id: 1, poster_path: "")],
+        [MovieResponse(id: 1, poster_path: "")]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureNavigationItem()
         configureHierarchy()
-        configureUI()
         configureLayout()
+        configureView()
         
-        if let movieID = movieID {
-            fetchSimilarMovies(movieID: movieID)
-            fetchRecommendedMovies(movieID: movieID)
-        }
+        fetchData()
     }
     
-    func configureNavigationItem() {
-        let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"), style: .plain, target: self, action: .none)
-        navigationItem.rightBarButtonItem = rightBarButton
-    }
-    
-    func configureHierarchy() {
-        view.addSubview(similarMovieLabel)
-        view.addSubview(similarCollectionView)
-        view.addSubview(recommendedMovieLabel)
-        view.addSubview(recommendedCollectionView)
-    }
-    
-    func configureUI() {
-        view.backgroundColor = .white
+    private func fetchData() {
+        guard let movieID = movieID else { return }
         
-        similarMovieLabel.text = "비슷한 영화"
-        similarMovieLabel.font = .boldSystemFont(ofSize: 17)
-        
-        recommendedMovieLabel.text = "추천 영화"
-        recommendedMovieLabel.font = .boldSystemFont(ofSize: 17)
-        
-        similarCollectionView.delegate = self
-        similarCollectionView.dataSource = self
-        similarCollectionView.register(SimilarMovieCell.self, forCellWithReuseIdentifier: SimilarMovieCell.identifier)
-        
-        recommendedCollectionView.delegate = self
-        recommendedCollectionView.dataSource = self
-        recommendedCollectionView.register(RecommendedMovieCell.self, forCellWithReuseIdentifier: RecommendedMovieCell.identifier)
-    }
-    
-    func configureLayout() {
-        similarMovieLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-        }
-        
-        similarCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(similarMovieLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.height.equalTo(160)
-        }
-        
-        recommendedMovieLabel.snp.makeConstraints { make in
-            make.top.equalTo(similarCollectionView.snp.bottom).offset(20)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-        }
-        
-        recommendedCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(recommendedMovieLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.height.equalTo(180)
-        }
-    }
-    
-    func similarCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: 100, height: 140)
-        return layout
-    }
-    
-    func recommendedCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: 120, height: 160)
-        return layout
-    }
-    
-    func fetchSimilarMovies(movieID: Int) {
-        let url = "\(APIURL.tmdbRootUrl)movie/\(movieID)/similar"
-        let params: [String: Any] = ["api_key": APIKey.mediaKey]
-        
-        AF.request(url, parameters: params).responseDecodable(of: MovieResponse.self) { response in
-            switch response.result {
-            case .success(let movieResponse):
-                self.similarMovies = movieResponse.results
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            TMDBAPI.shared.fetchSimilarMovies(movieID: movieID) { data in
                 DispatchQueue.main.async {
-                    self.similarCollectionView.reloadData()
+                    self.imageList[0] = data
+                    group.leave()
                 }
-            case .failure(let error):
-                print(error)
             }
         }
-    }
-    
-    func fetchRecommendedMovies(movieID: Int) {
-        let url = "\(APIURL.tmdbRootUrl)movie/\(movieID)/recommendations"
-        let params: [String: Any] = ["api_key": APIKey.mediaKey]
-        
-        AF.request(url, parameters: params).responseDecodable(of: MovieResponse.self) { response in
-            switch response.result {
-            case .success(let movieResponse):
-                self.recommendedMovies = movieResponse.results
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            TMDBAPI.shared.fetchRecommendedMovies(movieID: movieID) { data in
                 DispatchQueue.main.async {
-                    self.recommendedCollectionView.reloadData()
+                    self.imageList[1] = data
+                    group.leave()
                 }
-            case .failure(let error):
-                print(error)
             }
         }
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            TMDBAPI.shared.fetchPosterMovies(movieID: movieID) { data in
+                DispatchQueue.main.async {
+                    self.imageList[2] = data.map { MovieResponse(id: 0, poster_path: $0.file_path ?? "") }
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    override func configureHierarchy() {
+        view.addSubview(tableView)
+    }
+    
+    override func configureLayout() {
+        tableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+    
+    override func configureView() {
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
-extension MoreMovieViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MoreMovieViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return imageList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == similarCollectionView {
-            return similarMovies.count
-        } else {
-            return recommendedMovies.count
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PosterTableViewCell.id, for: indexPath) as? PosterTableViewCell else {
+            return UITableViewCell()
         }
+        
+        switch indexPath.row {
+        case 0:
+            cell.titleLabel.text = "비슷한 영화"
+        case 1:
+            cell.titleLabel.text = "추천 영화"
+        case 2:
+            cell.titleLabel.text = "포스터"
+        default:
+            break
+        }
+        
+        cell.backgroundColor = .white
+        cell.collectionView.dataSource = self
+        cell.collectionView.delegate = self
+        cell.collectionView.tag = indexPath.row
+        cell.collectionView.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.id)
+        cell.collectionView.reloadData()
+        
+        return cell
+    }
+}
+
+extension MoreMovieViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageList[collectionView.tag].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == similarCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarMovieCell.identifier, for: indexPath) as! SimilarMovieCell
-            let movie = similarMovies[indexPath.item]
-            cell.configure(with: movie)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedMovieCell.identifier, for: indexPath) as! RecommendedMovieCell
-            let movie = recommendedMovies[indexPath.item]
-            cell.configure(with: movie)
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.id, for: indexPath) as? PosterCollectionViewCell else {
+            return UICollectionViewCell()
         }
+        let data = imageList[collectionView.tag][indexPath.item]
+        let posterPath = data.poster_path ?? ""
+        if !posterPath.isEmpty {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(posterPath)")
+            cell.posterImageView.kf.setImage(with: url, completionHandler: { result in
+                switch result {
+                case .success(_):
+                    print("Image set successfully")
+                case .failure(let error):
+                    print("Error setting image: \(error)")
+                }
+            })
+        } else {
+            // 기본 이미지를 설정하거나 빈 상태로 둡니다.
+            cell.posterImageView.image = nil
+        }
+        
+        return cell
     }
 }
