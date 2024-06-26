@@ -3,7 +3,7 @@ import Alamofire
 import SnapKit
 import Kingfisher
 
-class MovieSearchViewController: UIViewController {
+class MovieSearchViewController: BaseViewController {
     
     let searchBar = UISearchBar()
     
@@ -15,9 +15,6 @@ class MovieSearchViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
-        configureHierarchy()
-        configureUI()
-        configureLayout()
     }
     
     func collectionViewLayout() -> UICollectionViewLayout {
@@ -35,12 +32,12 @@ class MovieSearchViewController: UIViewController {
         navigationItem.title = "영화 검색"
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         view.addSubview(searchBar)
         view.addSubview(collectionView)
     }
     
-    func configureUI() {
+    override func configureView() {
         view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .white
         
@@ -51,7 +48,7 @@ class MovieSearchViewController: UIViewController {
         searchBar.delegate = self
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         
         searchBar.snp.makeConstraints { make in
             make.horizontalEdges.top.equalTo(view.safeAreaLayoutGuide)

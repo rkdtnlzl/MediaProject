@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class MediaViewController: UIViewController {
+class MediaViewController: BaseViewController {
     
     let tableView = UITableView()
     var movies: [Media] = []
@@ -18,9 +18,6 @@ class MediaViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigationItem()
-        configureHierarchy()
-        configureUI()
-        configureLayout()
         fetchMedia()
     }
     
@@ -50,7 +47,7 @@ class MediaViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftBarButton
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -59,7 +56,7 @@ class MediaViewController: UIViewController {
         view.addSubview(tableView)
     }
     
-    func configureUI() {
+    override func configureView() {
         
         view.backgroundColor = .white
         tableView.backgroundColor = .gray
@@ -67,7 +64,7 @@ class MediaViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)

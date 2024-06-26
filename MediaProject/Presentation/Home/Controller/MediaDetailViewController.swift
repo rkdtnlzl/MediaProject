@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MediaDetailViewController: UIViewController {
+class MediaDetailViewController: BaseViewController {
     
     var media: Media?
     
@@ -21,20 +21,22 @@ class MediaDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        navigationItem.title = "출연/제작"
         
-        configureUI()
-        configureLayout()
+        navigationItem.title = "출연/제작"
+    
         updateUI()
     }
     
-    func configureUI() {
+    override func configureHierarchy() {
         view.addSubview(overviewLabel)
         view.addSubview(posterImageView)
+        view.addSubview(overviewIntroLabel)
         posterImageView.addSubview(titleLabel)
         posterImageView.addSubview(backDropImageView)
-        view.addSubview(overviewIntroLabel)
+    }
+    
+    override func configureView() {
+        view.backgroundColor = .white
         
         titleLabel.font = .systemFont(ofSize: 27, weight: .black)
         titleLabel.textColor = .white
@@ -55,7 +57,7 @@ class MediaDetailViewController: UIViewController {
         backDropImageView.backgroundColor = .gray
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         posterImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(220)
