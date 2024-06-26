@@ -15,10 +15,9 @@ class TMDBAPI {
     private init() { }
     
     func fetchSimilarMovies(movieID: Int, completionHandler: @escaping ([MovieResponse]) -> Void) {
-        let url = "\(APIURL.tmdbRootUrl)movie/\(movieID)/similar"
-        let params: [String: Any] = ["api_key": APIKey.mediaKey]
+        let request = TMDBRequest.similarMovies(movieID: movieID)
         
-        AF.request(url, parameters: params).responseDecodable(of: Movie.self) { response in
+        AF.request(request.endpoint, parameters: request.parameters, headers: request.headers).responseDecodable(of: Movie.self) { response in
             switch response.result {
             case .success(let value):
                 dump(value.results)
@@ -30,10 +29,9 @@ class TMDBAPI {
     }
     
     func fetchRecommendedMovies(movieID: Int, completionHandler: @escaping ([MovieResponse]) -> Void) {
-        let url = "\(APIURL.tmdbRootUrl)movie/\(movieID)/recommendations"
-        let params: [String: Any] = ["api_key": APIKey.mediaKey]
+        let request = TMDBRequest.recommendedMovies(movieID: movieID)
         
-        AF.request(url, parameters: params).responseDecodable(of: Movie.self) { response in
+        AF.request(request.endpoint, parameters: request.parameters, headers: request.headers).responseDecodable(of: Movie.self) { response in
             switch response.result {
             case .success(let value):
                 dump(value.results)
@@ -45,17 +43,15 @@ class TMDBAPI {
     }
     
     func fetchPosterMovies(movieID: Int, completionHandler: @escaping ([PosterResponse]) -> Void) {
-        let url = "\(APIURL.tmdbRootUrl)movie/\(movieID)/images"
-        let params: [String: Any] = ["api_key": APIKey.mediaKey]
+        let request = TMDBRequest.movieImages(movieID: movieID)
         
-        AF.request(url, parameters: params).responseDecodable(of: Poster.self) { response in
+        AF.request(request.endpoint, parameters: request.parameters, headers: request.headers).responseDecodable(of: Poster.self) { response in
             switch response.result {
             case .success(let value):
                 print("성공")
                 dump(value.posters)
                 completionHandler(value.posters)
             case .failure(let error):
-                print("실패")
                 print(error)
             }
         }

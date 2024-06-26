@@ -34,6 +34,7 @@
 		01C3623E2C2AAE6400D8ED61 /* PosterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3623D2C2AAE6400D8ED61 /* PosterTableViewCell.swift */; };
 		01C362402C2AAE9200D8ED61 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3623F2C2AAE9200D8ED61 /* PosterCollectionViewCell.swift */; };
 		01C362422C2AF34000D8ED61 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362412C2AF34000D8ED61 /* Poster.swift */; };
+		01C362562C2C067000D8ED61 /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362552C2C067000D8ED61 /* TMDBRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		01C3623D2C2AAE6400D8ED61 /* PosterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterTableViewCell.swift; sourceTree = "<group>"; };
 		01C3623F2C2AAE9200D8ED61 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		01C362412C2AF34000D8ED61 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		01C362552C2C067000D8ED61 /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				01C3622F2C2AA9A700D8ED61 /* TMDBAPI.swift */,
+				01C362552C2C067000D8ED61 /* TMDBRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 				016B9C762C18399C009D2996 /* APIKey.swift in Sources */,
 				01C362372C2AADA100D8ED61 /* BaseView.swift in Sources */,
 				01C3623E2C2AAE6400D8ED61 /* PosterTableViewCell.swift in Sources */,
+				01C362562C2C067000D8ED61 /* TMDBRequest.swift in Sources */,
 				016B9C782C1843A0009D2996 /* MovieSearchViewController.swift in Sources */,
 				016B9C672C1727D1009D2996 /* Media.swift in Sources */,
 			);
