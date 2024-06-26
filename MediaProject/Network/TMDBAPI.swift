@@ -56,4 +56,17 @@ class TMDBAPI {
             }
         }
     }
+    
+    func fetchTrendingMovies(completionHandler: @escaping ([Media]) -> Void) {
+        let request = TMDBRequest.trendingMovies
+        
+        AF.request(request.endpoint, parameters: request.parameters, headers: request.headers).responseDecodable(of: MediaResponse.self) { response in
+            switch response.result {
+            case .success(let value):
+                completionHandler(value.results)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 
 enum TMDBRequest {
+    case trendingMovies
     case similarMovies(movieID: Int)
     case recommendedMovies(movieID: Int)
     case movieImages(movieID: Int)
@@ -19,6 +20,8 @@ enum TMDBRequest {
     
     var endpoint: String {
         switch self {
+        case .trendingMovies:
+            return "\(baseURL)trending/movie/week"
         case .similarMovies(let movieID):
             return "\(baseURL)movie/\(movieID)/similar"
         case .recommendedMovies(let movieID):
