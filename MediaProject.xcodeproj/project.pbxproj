@@ -35,6 +35,7 @@
 		01C362402C2AAE9200D8ED61 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C3623F2C2AAE9200D8ED61 /* PosterCollectionViewCell.swift */; };
 		01C362422C2AF34000D8ED61 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362412C2AF34000D8ED61 /* Poster.swift */; };
 		01C362562C2C067000D8ED61 /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362552C2C067000D8ED61 /* TMDBRequest.swift */; };
+		01C362612C2D555400D8ED61 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362602C2D555400D8ED61 /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		01C3623F2C2AAE9200D8ED61 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		01C362412C2AF34000D8ED61 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
 		01C362552C2C067000D8ED61 /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
+		01C362602C2D555400D8ED61 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +215,7 @@
 				01C362362C2AADA100D8ED61 /* BaseView.swift */,
 				01C362382C2AADBF00D8ED61 /* BaseViewController.swift */,
 				01C3623A2C2AADE500D8ED61 /* BaseTableViewCell.swift */,
+				01C362602C2D555400D8ED61 /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				016B9C622C17279D009D2996 /* MediaTableViewCell.swift in Sources */,
 				01C362402C2AAE9200D8ED61 /* PosterCollectionViewCell.swift in Sources */,
 				01C362302C2AA9A700D8ED61 /* TMDBAPI.swift in Sources */,
+				01C362612C2D555400D8ED61 /* BaseCollectionViewCell.swift in Sources */,
 				016B9C7A2C184914009D2996 /* MovieSearchCollectionViewCell.swift in Sources */,
 				01C361FC2C294E3400D8ED61 /* RecommendMovieViewController.swift in Sources */,
 				016B9C4A2C16EBBD009D2996 /* SceneDelegate.swift in Sources */,

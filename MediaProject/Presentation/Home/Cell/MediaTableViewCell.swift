@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import SDWebImage
 
-class MediaTableViewCell: UITableViewCell {
+class MediaTableViewCell: BaseTableViewCell {
     
     static let identifier = "MediaTableViewCell"
     
@@ -26,17 +26,6 @@ class MediaTableViewCell: UITableViewCell {
     let ratingLabel = UILabel()
     let ratingValueLabel = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        configureUI()
-        configureLayout()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     func configure(with movie: Media) {
         
         releaseDateLabel.text = movie.release_date
@@ -51,8 +40,7 @@ class MediaTableViewCell: UITableViewCell {
         }
     }
     
-    func configureUI() {
-        
+    override func configureHierarchy() {
         contentView.addSubview(releaseDateLabel)
         contentView.addSubview(mediaTypeLabel)
         contentView.addSubview(containerView)
@@ -63,11 +51,14 @@ class MediaTableViewCell: UITableViewCell {
         
         contentView.addSubview(lineView)
         contentView.addSubview(detailLabel)
+        
         containerView.addSubview(detailButton)
         containerView.addSubview(ratingView)
         ratingView.addSubview(ratingLabel)
         ratingView.addSubview(ratingValueLabel)
-        
+    }
+    
+    override func configureView() {
         releaseDateLabel.font = UIFont.systemFont(ofSize: 13)
         mediaTypeLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
@@ -106,8 +97,7 @@ class MediaTableViewCell: UITableViewCell {
         ratingValueLabel.textColor = .white
     }
     
-    func configureLayout() {
-        
+    override func configureLayout() {
         releaseDateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.leading.equalToSuperview().inset(10)
