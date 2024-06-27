@@ -20,7 +20,7 @@ class MovieSearchViewController: BaseViewController {
     func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width - 40
-        layout.itemSize = CGSize(width: width/3, height: width/3+20)
+        layout.itemSize = CGSize(width: width/3, height: width/3+30)
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
@@ -85,7 +85,9 @@ extension MovieSearchViewController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieSearchCollectionViewCell.identifier, for: indexPath) as! MovieSearchCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieSearchCollectionViewCell.identifier, for: indexPath) as? MovieSearchCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         let movie = movies[indexPath.item]
         cell.configure(with: movie)
         return cell
