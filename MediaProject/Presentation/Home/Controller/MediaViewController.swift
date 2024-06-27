@@ -93,6 +93,7 @@ extension MediaViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         cell.configure(with: movies[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
     
