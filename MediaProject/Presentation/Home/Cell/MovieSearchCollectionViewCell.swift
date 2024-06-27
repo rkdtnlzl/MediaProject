@@ -17,11 +17,13 @@ class MovieSearchCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .gray
+        imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 10
         imageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(contentView.snp.width)
+            make.height.equalTo(contentView.snp.height)
         }
     }
     
