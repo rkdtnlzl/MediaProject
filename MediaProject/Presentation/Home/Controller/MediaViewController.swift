@@ -101,6 +101,7 @@ extension MediaViewController: UITableViewDataSource, UITableViewDelegate {
         let selectedMedia = movies[indexPath.row]
         let detailVC = MediaDetailViewController()
         detailVC.media = selectedMedia
+        detailVC.movieID = movies[indexPath.row].id
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
