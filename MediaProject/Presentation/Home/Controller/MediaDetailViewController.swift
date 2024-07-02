@@ -7,24 +7,26 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 final class MediaDetailViewController: BaseViewController {
     
     var media: Media?
+    var videos: [Video] = []
+    var movieID: Int?
     
     private let titleLabel = UILabel()
     private let overviewIntroLabel = UILabel()
     private let overviewLabel = UILabel()
     private let posterImageView = UIImageView()
     private let backDropImageView = UIImageView()
+    private let youtubeButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         navigationItem.title = "출연/제작"
-    
         updateUI()
+        configureTarget()
     }
     
     override func configureHierarchy() {
@@ -33,6 +35,7 @@ final class MediaDetailViewController: BaseViewController {
         view.addSubview(overviewIntroLabel)
         posterImageView.addSubview(titleLabel)
         posterImageView.addSubview(backDropImageView)
+        view.addSubview(youtubeButton)
     }
     
     override func configureView() {
@@ -55,6 +58,11 @@ final class MediaDetailViewController: BaseViewController {
         backDropImageView.contentMode = .scaleAspectFill
         backDropImageView.clipsToBounds = true
         backDropImageView.backgroundColor = .gray
+        
+        youtubeButton.setTitle("영상시청하기", for: .normal)
+        youtubeButton.backgroundColor = .brown
+        youtubeButton.tintColor = .white
+        youtubeButton.layer.cornerRadius = 10
     }
     
     override func configureLayout() {
@@ -83,6 +91,26 @@ final class MediaDetailViewController: BaseViewController {
         overviewLabel.snp.makeConstraints { make in
             make.top.equalTo(overviewIntroLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(20)
+        }
+        
+        youtubeButton.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
+            make.height.equalTo(44)
+        }
+    }
+    
+    func configureTarget() {
+        youtubeButton.addTarget(self, action: #selector(youtubeButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc private func youtubeButtonClicked() {
+        guard let movieID = movieID else { return }
+        TMDBAPI.shared.fetchVideo(movieID: movieID) { [weak self] youtubeKey in
+            guard let self = self else { return }
+            guard let key = youtubeKey else { return }
+            let vc = MediaWebViewController()
+            vc.urlString = "https://www.youtube.com/watch?v=\(key)"
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
