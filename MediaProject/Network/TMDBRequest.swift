@@ -13,6 +13,7 @@ enum TMDBRequest {
     case similarMovies(movieID: Int)
     case recommendedMovies(movieID: Int)
     case movieImages(movieID: Int)
+    case videoSearch(movieID: Int)
     
     var baseURL: String {
         return "https://api.themoviedb.org/3/"
@@ -28,6 +29,8 @@ enum TMDBRequest {
             return "\(baseURL)movie/\(movieID)/recommendations"
         case .movieImages(let movieID):
             return "\(baseURL)movie/\(movieID)/images"
+        case .videoSearch(let movieID):
+            return "\(baseURL)movie/\(movieID)/videos"
         }
     }
     

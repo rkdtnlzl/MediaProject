@@ -69,4 +69,19 @@ class TMDBAPI {
             }
         }
     }
+    
+    func fetchVideo(movieID: Int, completionHandler: @escaping (String?) -> Void) {
+        let request = TMDBRequest.videoSearch(movieID: movieID)
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos"
+        AF.request(url, parameters: request.parameters).responseDecodable(of: Video.self) { response in
+            switch response.result {
+            case .success(let video):
+                let youtubeKey = video.results.first { $0.site == "YouTube" }?.key
+                completionHandler(youtubeKey)
+            case .failure(let error):
+                print("error")
+                completionHandler(nil)
+            }
+        }
+    }
 }

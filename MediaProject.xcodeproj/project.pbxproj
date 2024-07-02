@@ -37,6 +37,8 @@
 		01C362562C2C067000D8ED61 /* TMDBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362552C2C067000D8ED61 /* TMDBRequest.swift */; };
 		01C362612C2D555400D8ED61 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362602C2D555400D8ED61 /* BaseCollectionViewCell.swift */; };
 		01C362632C2E50BD00D8ED61 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362622C2E50BD00D8ED61 /* UILabel+.swift */; };
+		01C362962C33E43B00D8ED61 /* MediaWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362952C33E43B00D8ED61 /* MediaWebViewController.swift */; };
+		01C362982C33E96600D8ED61 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C362972C33E96600D8ED61 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		01C362552C2C067000D8ED61 /* TMDBRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBRequest.swift; sourceTree = "<group>"; };
 		01C362602C2D555400D8ED61 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		01C362622C2E50BD00D8ED61 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		01C362952C33E43B00D8ED61 /* MediaWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaWebViewController.swift; sourceTree = "<group>"; };
+		01C362972C33E96600D8ED61 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 			children = (
 				016B9C4B2C16EBBD009D2996 /* MediaViewController.swift */,
 				016B9C8B2C1995B9009D2996 /* MediaDetailViewController.swift */,
+				01C362952C33E43B00D8ED61 /* MediaWebViewController.swift */,
 				016B9C772C1843A0009D2996 /* MovieSearchViewController.swift */,
 				01C362062C29863500D8ED61 /* MoreMovieViewController.swift */,
 			);
@@ -169,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				016B9C662C1727D1009D2996 /* Media.swift */,
+				01C362972C33E96600D8ED61 /* Video.swift */,
 				016B9C7B2C1867FD009D2996 /* Movie.swift */,
 				01C362412C2AF34000D8ED61 /* Poster.swift */,
 			);
@@ -318,6 +324,7 @@
 				016B9C8C2C1995B9009D2996 /* MediaDetailViewController.swift in Sources */,
 				016B9C4C2C16EBBD009D2996 /* MediaViewController.swift in Sources */,
 				01C362392C2AADBF00D8ED61 /* BaseViewController.swift in Sources */,
+				01C362962C33E43B00D8ED61 /* MediaWebViewController.swift in Sources */,
 				01C361FA2C294DDB00D8ED61 /* TabBarViewController.swift in Sources */,
 				016B9C482C16EBBD009D2996 /* AppDelegate.swift in Sources */,
 				01C362072C29863500D8ED61 /* MoreMovieViewController.swift in Sources */,
@@ -337,6 +344,7 @@
 				01C362562C2C067000D8ED61 /* TMDBRequest.swift in Sources */,
 				016B9C782C1843A0009D2996 /* MovieSearchViewController.swift in Sources */,
 				016B9C672C1727D1009D2996 /* Media.swift in Sources */,
+				01C362982C33E96600D8ED61 /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
