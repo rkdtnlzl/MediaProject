@@ -10,18 +10,18 @@ import Alamofire
 import SnapKit
 import Kingfisher
 
-class MoreMovieViewController: BaseViewController {
+final class MoreMovieViewController: BaseViewController {
     
     var movieID: Int?
     
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let view = UITableView()
         view.rowHeight = 200
         view.register(PosterTableViewCell.self, forCellReuseIdentifier: PosterTableViewCell.id)
         return view
     }()
     
-    var imageList: [[MovieResponse]] = [
+    private var imageList: [[MovieResponse]] = [
         [MovieResponse(id: 1, poster_path: "")],
         [MovieResponse(id: 1, poster_path: "")],
         [MovieResponse(id: 1, poster_path: "")]

@@ -8,15 +8,15 @@
 import UIKit
 import SnapKit
 
-class MediaDetailViewController: BaseViewController {
+final class MediaDetailViewController: BaseViewController {
     
     var media: Media?
     
-    let titleLabel = UILabel()
-    let overviewIntroLabel = UILabel()
-    let overviewLabel = UILabel()
-    let posterImageView = UIImageView()
-    let backDropImageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let overviewIntroLabel = UILabel()
+    private let overviewLabel = UILabel()
+    private let posterImageView = UIImageView()
+    private let backDropImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()

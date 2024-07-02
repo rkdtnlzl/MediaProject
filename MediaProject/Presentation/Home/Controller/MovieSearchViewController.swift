@@ -1,11 +1,18 @@
+//
+//  MovieSearchViewController.swift
+//  MediaProject
+//
+//  Created by 강석호 on 6/11/24.
+//
+
 import UIKit
 import Alamofire
 import SnapKit
 import Kingfisher
 
-class MovieSearchViewController: BaseViewController {
+final class MovieSearchViewController: BaseViewController {
     
-    let searchBar = UISearchBar()
+    private let searchBar = UISearchBar()
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     
@@ -28,7 +35,7 @@ class MovieSearchViewController: BaseViewController {
         return layout
     }
     
-    func configureNavigation() {
+    private func configureNavigation() {
         navigationItem.title = "영화 검색"
     }
     

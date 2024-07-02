@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class MediaViewController: BaseViewController {
+final class MediaViewController: BaseViewController {
     
-    let tableView = UITableView()
+    private let tableView = UITableView()
     var movies: [Media] = []
     
     override func viewDidLoad() {
